@@ -20,9 +20,7 @@ cache:
     - $HOME/.npm
 
 php:
-  - 7.0
-  - 7.1
-  - 7.2
+  - 7.3
 
 env:
   global:
@@ -39,21 +37,9 @@ env:
 
 matrix:
   exclude:
-    - php: 7.0
-      env: MOODLE_BRANCH=MOODLE_38_STABLE DB=mysqli
-    - php: 7.0
-      env: MOODLE_BRANCH=MOODLE_38_STABLE DB=pgsql
-    - php: 7.0
-      env: MOODLE_BRANCH=MOODLE_37_STABLE DB=mysqli
-    - php: 7.0
-      env: MOODLE_BRANCH=MOODLE_37_STABLE DB=pgsql
-    - php: 7.2
-      env: MOODLE_BRANCH=MOODLE_32_STABLE DB=mysqli
-    - php: 7.2
-      env: MOODLE_BRANCH=MOODLE_32_STABLE DB=pgsql
-    - php: 7.2
+    - php: 7.3
       env: MOODLE_BRANCH=MOODLE_33_STABLE DB=mysqli
-    - php: 7.2
+    - php: 7.3
       env: MOODLE_BRANCH=MOODLE_33_STABLE DB=pgsql
 
 before_install:
@@ -64,7 +50,7 @@ before_install:
   - export PATH="$(cd ci/bin; pwd):$(cd ci/vendor/bin; pwd):$PATH"
 
 install:
-  - moodle-plugin-ci add-plugin --branch PLUGINS-1286 wiris/moodle-filter_wiris
+  - moodle-plugin-ci add-plugin wiris/moodle-filter_wiris
   - moodle-plugin-ci install
 
 script:
